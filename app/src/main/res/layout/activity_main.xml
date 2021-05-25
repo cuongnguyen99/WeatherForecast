@@ -559,7 +559,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp1"
@@ -615,7 +615,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp2"
@@ -671,7 +671,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp3"
@@ -727,7 +727,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp4"
@@ -783,7 +783,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp5"
@@ -839,7 +839,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp6"
@@ -895,7 +895,7 @@
                     android:gravity="center|start"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="25dp"></TextView>
+                    android:textSize="17dp"></TextView>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_daily_temp7"
