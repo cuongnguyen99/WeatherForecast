@@ -15,20 +15,24 @@ public interface CurrentWeatherAPI {
 
     //    http://api.openweathermap.org/data/2.5/weather?q={Vinh}&units={metric}&lang={vi}&appid={7027a7f8895e3698e6f30a47722eb07a}
     @GET("weather")
-    Call<CurrentWeather> getAPIWeather(@Query("q") String cityname,
+    Call<CurrentWeather> getAPIWeather(@Query("lat") String latitude,
+                             @Query("lon") String longitude,
                              @Query("units") String unit,
                              @Query("lang") String lang,
                              @Query("appid") String key);
     //    http://api.openweathermap.org/data/2.5/forecast?q=Vinh&appid=7027a7f8895e3698e6f30a47722eb07a
     @GET("forecast")
-    Call<HourWeather> getAPIHourWeather(@Query("q") String cityname,
-                                                 @Query("units") String unit,
-                                                 @Query("appid") String key);
-    //    http://api.openweathermap.org/data/2.5/forecast?q=vinh&units=metric&cnt=7&appid=7027a7f8895e3698e6f30a47722eb07a
-    @GET("forecast")
-    Call<DailyWeather> getAPIDailyWeather(@Query("q") String vityname,
+    Call<HourWeather> getAPIHourWeather(@Query("lat") String latitude,
+                                        @Query("lon") String longitude,
+                                        @Query("units") String unit,
+                                        @Query("appid") String key);
+    //    https://api.openweathermap.org/data/2.5/onecall?lat=18.66&lon=105.69&units=metric&exclude=hourly&appid=d36636bb515a9f786a7d300557c7b328
+    @GET("onecall")
+    Call<DailyWeather> getAPIDailyWeather(@Query("lat") String latitude,
+                                          @Query("lon") String longitude,
                                           @Query("units") String units,
-                                          @Query("cnt") String day,
+                                          @Query("exclude") String exclude,
                                           @Query("appid") String key
                                           );
+//    https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&units=metric&exclude=hourly&appid=d36636bb515a9f786a7d300557c7b328
 }

@@ -21,8 +21,8 @@ public class CurrentWeatherService {
                     .build()
                     .create(CurrentWeatherAPI.class);
     }
-    public Call<CurrentWeather> getCurrentWeather()
+    public Call<CurrentWeather> getCurrentWeather(double lat, double lon)
     {
-        return api.getAPIWeather("Vinh", "metric", "vi", "7027a7f8895e3698e6f30a47722eb07a");
+        return api.getAPIWeather(String.valueOf(lat), String.valueOf(lon), "metric", "vi", "7027a7f8895e3698e6f30a47722eb07a");
     }
 }

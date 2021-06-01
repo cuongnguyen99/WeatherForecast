@@ -3,6 +3,8 @@ package com.midterm.weatherforecast.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class List implements Serializable {
     @SerializedName("main")
@@ -11,11 +13,14 @@ public class List implements Serializable {
     private java.util.List<Weather> weather = null;
     @SerializedName("dt_txt")
     private String dtTxt;
+    @SerializedName("dt")
+    private String dt;
 
-    public List(Main main, java.util.List<Weather> weather, String dtTxt) {
+    public List(Main main, java.util.List<Weather> weather, String dtTxt, String dt) {
         this.main = main;
         this.weather = weather;
         this.dtTxt = dtTxt;
+        this.dt = dt;
     }
 
     public Main getMain() {
@@ -40,5 +45,22 @@ public class List implements Serializable {
 
     public void setDtTxt(String dtTxt) {
         this.dtTxt = dtTxt;
+    }
+
+    public String getDt() {
+        return dt;
+    }
+
+    public void setDt(String dt) {
+        this.dt = dt;
+    }
+    public String getDay(String daycode)
+    {
+        long d = Long.valueOf(daycode);
+        Date date = new Date(d*1000L);
+        SimpleDateFormat spd = new SimpleDateFormat("EEEE");
+        String result = spd.format(date);
+
+        return result;
     }
 }

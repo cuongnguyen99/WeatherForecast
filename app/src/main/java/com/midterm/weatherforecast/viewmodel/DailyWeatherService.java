@@ -19,8 +19,8 @@ public class DailyWeatherService {
                 .build()
                 .create(CurrentWeatherAPI.class);
     }
-    public Call<DailyWeather> getDailyWeather()
+    public Call<DailyWeather> getDailyWeather(double lat, double lon)
     {
-        return api.getAPIDailyWeather("Vinh", "metric", "7", "7027a7f8895e3698e6f30a47722eb07a");
+        return api.getAPIDailyWeather(String.valueOf(lat),String.valueOf(lon), "metric", "hourly", "7027a7f8895e3698e6f30a47722eb07a");
     }
 }

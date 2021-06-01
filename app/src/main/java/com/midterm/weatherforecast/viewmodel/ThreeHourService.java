@@ -22,8 +22,8 @@ public class ThreeHourService {
                 .build()
                 .create(CurrentWeatherAPI.class);
     }
-    public Call<HourWeather> getHourWeather()
+    public Call<HourWeather> getHourWeather(double lat, double lon)
     {
-        return api.getAPIHourWeather("Vinh", "metric", "7027a7f8895e3698e6f30a47722eb07a");
+        return api.getAPIHourWeather(String.valueOf(lat), String.valueOf(lon), "metric", "7027a7f8895e3698e6f30a47722eb07a");
     }
 }
