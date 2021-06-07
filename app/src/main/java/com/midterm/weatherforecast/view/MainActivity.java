@@ -1,9 +1,13 @@
 package com.midterm.weatherforecast.view;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -15,6 +19,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +30,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.midterm.weatherforecast.R;
 import com.midterm.weatherforecast.Test.Api;
 import com.midterm.weatherforecast.Test.Example;
@@ -51,7 +57,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView imgIcon, imgHumidity, imgCloudSpeed;
     private TextView txtTemp, txtDescription,txtHumidity, txtWindSpeed, txtLoCation, txtCurrentDay;
@@ -70,6 +76,10 @@ public class MainActivity extends AppCompatActivity{
     private DailyWeatherService apiDailyService;
     private FusedLocationProviderClient client;
     private LocationManager locationManager;
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     public static double lat;
     public static double lon;
@@ -103,6 +113,18 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }
             });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
         }
     }
 
@@ -168,6 +190,18 @@ public class MainActivity extends AppCompatActivity{
         imgDailyIcon6 = findViewById(R.id.img_daily_icon6);
         imgDailyIcon7 = findViewById(R.id.img_daily_icon7);
 
+        //Menu toolbar
+        navigationView = findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.draw_layout);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void ApiCurrentWeatherCall(double lat, double lon) {
@@ -287,4 +321,9 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
+    }
 }
