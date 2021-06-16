@@ -18,7 +18,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/menu" />
-
+    <!-- Main layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +26,7 @@
         android:scaleType="centerCrop"
         tools:context=".view.MainActivity"
         >
-
+        <!--  show detail layout  -->
         <LinearLayout
             android:id="@+id/linearLayout_1"
             android:layout_width="match_parent"
@@ -37,28 +37,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline3">
-
+            <!--   Show temperature, humidity,ddress, date  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:orientation="horizontal"
                 android:weightSum="5">
-
+                <!--   Show cloud, sun, moon  -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:gravity="start|center"
                     android:paddingStart="10dp">
-
+                    <!--   Show cloud, sun, moon  -->
                     <ImageView
                         android:id="@+id/iv_weather_current"
                         android:layout_width="125dp"
                         android:layout_height="match_parent"
                         app:srcCompat="@drawable/ic_baseline_cloud_24"
                         tools:ignore="VectorDrawableCompat" />
-
+                    <!--   Show unit  -->
                     <TextView
                         android:id="@+id/tv_nhietdo"
                         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                         android:textColor="@color/white"
                         android:textSize="30sp" />
                 </LinearLayout>
-
+                <!--   Show wind speed -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -138,7 +138,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
+            <!--   Show date, address  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -186,7 +186,7 @@
                     android:textSize="17sp" />
             </LinearLayout>
         </LinearLayout>
-
+        <!--  Show detailed weather hour by hour  -->
         <LinearLayout
             android:id="@+id/linearLayout_2"
             android:layout_width="match_parent"
@@ -522,6 +522,7 @@
 
             </LinearLayout>
         </LinearLayout>
+        <!--   Show detailed weather hour by aily    -->
 
         <LinearLayout
             android:id="@+id/linearLayout_3"
