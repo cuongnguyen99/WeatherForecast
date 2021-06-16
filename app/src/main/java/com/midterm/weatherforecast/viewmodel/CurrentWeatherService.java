@@ -1,6 +1,5 @@
 package com.midterm.weatherforecast.viewmodel;
 
-import com.midterm.weatherforecast.Test.Example;
 import com.midterm.weatherforecast.api.CurrentWeatherAPI;
 import com.midterm.weatherforecast.model.CurrentWeather;
 

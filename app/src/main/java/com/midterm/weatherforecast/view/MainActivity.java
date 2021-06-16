@@ -1,6 +1,7 @@
 package com.midterm.weatherforecast.view;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,6 +11,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -32,8 +35,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.midterm.weatherforecast.R;
-import com.midterm.weatherforecast.Test.Api;
-import com.midterm.weatherforecast.Test.Example;
 import com.midterm.weatherforecast.api.CurrentWeatherAPI;
 import com.midterm.weatherforecast.model.CurrentWeather;
 import com.midterm.weatherforecast.model.DailyWeather;
@@ -58,6 +59,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final int REQUEST_CODE = 1001;
 
     private ImageView imgIcon, imgHumidity, imgCloudSpeed;
     private TextView txtTemp, txtDescription,txtHumidity, txtWindSpeed, txtLoCation, txtCurrentDay;
@@ -201,7 +204,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        //Directional
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     public void ApiCurrentWeatherCall(double lat, double lon) {
@@ -323,7 +328,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.nav_home:
+                break;
+            case R.id.nav_search:
+                Intent intent_search = new Intent(MainActivity.this, SearchActivity.class);
+                startActivityForResult(intent_search, REQUEST_CODE);
+                break;
+            case R.id.nav_reload:
+                ApiCurrentWeatherCall(lat, lon);
+                APIHourWeather(lat, lon);
+                APIDailyWeather(lat, lon);
+                break;
+            case R.id.nav_rate:
+                Toast.makeText(MainActivity.this, "We will update soon ", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_contact:
+                Toast.makeText(MainActivity.this, "We will update soon ", Toast.LENGTH_LONG).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE) {
+            if(resultCode == Activity.RESULT_OK) {
+                double lat = data.getDoubleExtra("lat", 0);
+                double lon = data.getDoubleExtra("lon", 0);
+                ApiCurrentWeatherCall(lat, lon);
+                APIHourWeather(lat, lon);
+                APIDailyWeather(lat, lon);
+            }
+        }
+
+    }
+    private void ShowToast(String mess)
+    {
+        Toast.makeText(MainActivity.this, mess, Toast.LENGTH_SHORT).show();
     }
 }

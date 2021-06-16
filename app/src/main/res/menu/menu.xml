@@ -12,9 +12,9 @@
             android:icon="@drawable/ic_baseline_search_24">
         </item>
         <item
-            android:id="@+id/nav_history"
-            android:title="History Searched"
-            android:icon="@drawable/ic_baseline_history_24">
+            android:id="@+id/nav_reload"
+            android:title="Reload"
+            android:icon="@drawable/ic_baseline_autorenew_24">
         </item>
     </group>
     <group android:checkableBehavior="single"
