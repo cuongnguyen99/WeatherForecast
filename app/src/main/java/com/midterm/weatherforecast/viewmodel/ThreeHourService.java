@@ -10,17 +10,18 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public class ThreeHourService {
     private CurrentWeatherAPI api;
     public ThreeHourService()
     {
-        api = new Retrofit.Builder()
-                .baseUrl("http://api.openweathermap.org/data/2.5/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build()
-                .create(CurrentWeatherAPI.class);
+        @GET("forecast")
+        Call<HourWeather> getAPIHourWeather(@Query("lat") String latitude,
+            @Query("lon") String longitude,
+            @Query("units") String unit,
+            @Query("appid") String key);
     }
     public Call<HourWeather> getHourWeather(double lat, double lon)
     {
