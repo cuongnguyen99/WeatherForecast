@@ -17,11 +17,12 @@ public class ThreeHourService {
     private CurrentWeatherAPI api;
     public ThreeHourService()
     {
-        @GET("forecast")
-        Call<HourWeather> getAPIHourWeather(@Query("lat") String latitude,
-            @Query("lon") String longitude,
-            @Query("units") String unit,
-            @Query("appid") String key);
+        api = new Retrofit.Builder()
+                .baseUrl("http://api.openweathermap.org/data/2.5/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .build()
+                .create(CurrentWeatherAPI.class);
     }
     public Call<HourWeather> getHourWeather(double lat, double lon)
     {

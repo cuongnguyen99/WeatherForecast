@@ -15,16 +15,16 @@ public class CurrentWeatherService {
 
     public CurrentWeatherService()
     {
-        @GET("weather")
-        Call<CurrentWeather> getAPIWeather(@Query("lat") String latitude,
-            @Query("lon") String longitude,
-            @Query("units") String unit,
-            @Query("lang") String lang,
-            @Query("appid") String key);
+        api = new Retrofit.Builder()
+                .baseUrl("http://api.openweathermap.org/data/2.5/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .build()
+                .create(CurrentWeatherAPI.class);
     }
 
     public Call<CurrentWeather> getCurrentWeather(double lat, double lon)
     {
-        return api.getAPIDailyWeather(String.valueOf(lat),String.valueOf(lon), "metric", "hourly", "7027a7f8895e3698e6f30a47722eb07a");
+        return api.getAPIWeather(String.valueOf(lat), String.valueOf(lon), "metric", "vi", "7027a7f8895e3698e6f30a47722eb07a");
     }
 }
