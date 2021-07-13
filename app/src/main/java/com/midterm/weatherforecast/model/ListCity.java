@@ -1,5 +1,7 @@
 package com.midterm.weatherforecast.model;
 
+// h
+
 public class ListCity {
     private String cityName;
     private double lat;
