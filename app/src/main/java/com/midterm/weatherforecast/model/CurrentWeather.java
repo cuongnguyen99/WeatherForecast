@@ -9,6 +9,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+// H
+
 public class CurrentWeather implements Serializable {
     @SerializedName("weather")
     private List<Weather> weather = null;
