@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+// H
+
 public class DailyWeather implements Serializable {
     @SerializedName("daily")
     private java.util.List<Daily> daily = null;
