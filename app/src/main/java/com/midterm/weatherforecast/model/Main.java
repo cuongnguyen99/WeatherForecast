@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+// H
+
 public class Main implements Serializable {
     @SerializedName("temp")
     private double temp;
