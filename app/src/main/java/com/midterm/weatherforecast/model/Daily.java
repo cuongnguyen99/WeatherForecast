@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+// H
+
 public class Daily implements Serializable {
     @SerializedName("dt")
     private Integer dt;
