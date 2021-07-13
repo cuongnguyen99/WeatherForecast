@@ -4,6 +4,8 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+// G
+
 public class Wind implements Serializable{
     @SerializedName("speed")
     private Double speed;
