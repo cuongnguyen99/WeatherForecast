@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// H
-
 public class List implements Serializable {
     @SerializedName("main")
     private Main main;
