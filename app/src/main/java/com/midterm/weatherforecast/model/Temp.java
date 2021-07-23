@@ -3,8 +3,6 @@ package com.midterm.weatherforecast.model;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
-// Nh
-
 public class Temp implements Serializable {
     @SerializedName("min")
     private Double min;
