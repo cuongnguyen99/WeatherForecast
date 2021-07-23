@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-// H
-
 public class HourWeather implements Serializable {
     @SerializedName("list")
     private java.util.List<com.midterm.weatherforecast.model.List> list = null;
