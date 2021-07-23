@@ -7,8 +7,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 
-// th
-
 public class Weather implements Serializable {
     @SerializedName("main")
     private String main;
